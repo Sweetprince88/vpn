@@ -6,6 +6,7 @@
  * @date 2022/2/23
  * @author Kenneth & X.
  **/
+console.log("response", $response);
 Date.prototype.Format = function(formatStr)
 {
     var str = formatStr;
@@ -37,6 +38,7 @@ var body = $response.body;
 var url = $request.url;
 var res = JSON.parse(body);
 
+console.log("response", $response);
 console.log("原始结果", body);
 console.log("获取结果", res);
 var data = res.data;
