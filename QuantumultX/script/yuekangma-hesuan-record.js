@@ -35,16 +35,11 @@ Date.prototype.Format = function(formatStr)
     return str;
 }
 
-console.log("response" + $response);
 
 var body = $response.body;
 var url = $request.url;
 var res = JSON.parse(body);
 
-console.log("body");
-console.log(body);
-console.log("获取结果");
-console.log(res);
 var data = res.data;
 var records = data.records;
 
@@ -70,7 +65,7 @@ var lastRecord = {
 records.unshift(lastRecord);
 
 console.log("调整后记录");
-console.log(res);
+console.log(JSON.stringify(res));
 body = JSON.stringify(res);
 
 $done({body});
