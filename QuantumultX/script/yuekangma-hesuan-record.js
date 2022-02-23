@@ -37,6 +37,7 @@ var body = $response.body;
 var url = $request.url;
 var res = JSON.parse(body);
 
+console.log("原始结果", body);
 console.log("获取结果", res);
 var data = res.data;
 var records = data.records;
