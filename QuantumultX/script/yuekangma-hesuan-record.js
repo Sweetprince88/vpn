@@ -24,18 +24,19 @@ var year = myDate.getFullYear();
 var month = myDate.getMonth() > 9 ? myDate.getMonth().toString():'0' + myDate.getMonth();
 var day = myDate.getDate() > 9 ? myDate.getDate().toString():'0' + myDate.getDate();
 var date = year + "-" + month + "-" + day;
+console.log(date);
 
 var lastRecord = {
     "姓名": "李勤",
     "展示来源": "广东省卫生健康委员会",
     "数据来源": "公安",
-    "显示时间": day + " 04:00",
-    "检测日期": day  + " 04:00:00",
+    "显示时间": date + " 04:00",
+    "检测日期": date  + " 04:00:00",
     "检测机构": "深圳和合医学检验实验室",
     "检测类型": "核酸检测",
     "检测结果": "阴性",
-    "申报时间": day + " 04:00:00",
-    "采样日期": day + " 01:13:49"
+    "申报时间": date + " 04:00:00",
+    "采样日期": date + " 01:13:49"
 }
 
 // 第1条记录
