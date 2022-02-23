@@ -3,9 +3,6 @@
  **/
 var body = $response.body;
 var url = $request.url;
-var obj = JSON.parse(body);
-
-
 
 console.log(body);
 const vip = '/vip/v2/user/vip';
@@ -22,6 +19,7 @@ if (url.indexOf(vip) != -1) {
     obj.data["vip3Expire"] = "1835312949000";
     body = JSON.stringify(obj);
 }
+console.log(123);
 
 if (url.indexOf(time) != -1) {
     obj["isVIPMAutoPay"] = 2;
