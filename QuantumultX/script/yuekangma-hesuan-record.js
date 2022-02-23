@@ -7,23 +7,49 @@
  * @author Kenneth & X.
  **/
 
-console.log("response", $response);
+Date.prototype.Format = function(formatStr)
+{
+    var str = formatStr;
+    var Week = ['日','一','二','三','四','五','六'];
+
+    str=str.replace(/yyyy|YYYY/,this.getFullYear());
+    str=str.replace(/yy|YY/,(this.getYear() % 100)>9?(this.getYear() % 100).toString():'0' + (this.getYear() % 100));
+
+    str=str.replace(/MM/,this.getMonth()>9?this.getMonth().toString():'0' + this.getMonth());
+    str=str.replace(/M/g,this.getMonth());
+
+    str=str.replace(/w|W/g,Week[this.getDay()]);
+
+    str=str.replace(/dd|DD/,this.getDate()>9?this.getDate().toString():'0' + this.getDate());
+    str=str.replace(/d|D/g,this.getDate());
+
+    str=str.replace(/hh|HH/,this.getHours()>9?this.getHours().toString():'0' + this.getHours());
+    str=str.replace(/h|H/g,this.getHours());
+    str=str.replace(/mm/,this.getMinutes()>9?this.getMinutes().toString():'0' + this.getMinutes());
+    str=str.replace(/m/g,this.getMinutes());
+
+    str=str.replace(/ss|SS/,this.getSeconds()>9?this.getSeconds().toString():'0' + this.getSeconds());
+    str=str.replace(/s|S/g,this.getSeconds());
+
+    return str;
+}
+
+console.log("response" + $response);
 
 var body = $response.body;
 var url = $request.url;
 var res = JSON.parse(body);
 
-console.log("原始结果", body);
-console.log("获取结果", res);
+console.log("body");
+console.log(body);
+console.log("获取结果");
+console.log(res);
 var data = res.data;
 var records = data.records;
 
 // 动态时间
 var myDate = new Date();
-var year = myDate.getFullYear();
-var month = myDate.getMonth() > 9 ? myDate.getMonth().toString():'0' + myDate.getMonth();
-var day = myDate.getDate() > 9 ? myDate.getDate().toString():'0' + myDate.getDate();
-var date = year + "-" + month + "-" + day;
+var date = myDate.Format("yyyy-MM-dd");
 console.log(date);
 
 var lastRecord = {
@@ -42,7 +68,8 @@ var lastRecord = {
 // 第1条记录
 records.unshift(lastRecord);
 
-console.log("调整后记录", res);
+console.log("调整后记录");
+console.log(res);
 body = JSON.stringify(res);
 
 $done({body});
